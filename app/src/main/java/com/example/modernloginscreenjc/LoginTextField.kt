@@ -21,8 +21,9 @@ import com.example.modernloginscreenjc.ui.theme.unfocusedTextFieldText
 fun LoginTextField(
     modifier: Modifier = Modifier,
     label: String,
-    trailing: String
+    trailing: String,
 ) {
+
     val uiColor = if (isSystemInDarkTheme()) Color.White else Black
 
     TextField(
@@ -30,27 +31,24 @@ fun LoginTextField(
         value = "",
         onValueChange = {},
         label = {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.labelMedium,
-                color = uiColor
-            )
+            Text(text = label, style = MaterialTheme.typography.labelMedium, color = uiColor)
         },
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = MaterialTheme.colorScheme.textFieldContainer,
-            placeholderColor = MaterialTheme.colorScheme.focusedTextFieldText,
-            disabledPlaceholderColor = MaterialTheme.colorScheme.unfocusedTextFieldText
+        colors = TextFieldDefaults.colors(
+            unfocusedPlaceholderColor = MaterialTheme.colorScheme.unfocusedTextFieldText,
+            focusedPlaceholderColor = MaterialTheme.colorScheme.focusedTextFieldText,
+            unfocusedContainerColor = MaterialTheme.colorScheme.textFieldContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.textFieldContainer,
         ),
         trailingIcon = {
-            if (trailing.isNotEmpty()) {
-                TextButton(onClick = {}) {
-                    Text(
-                        text = trailing,
-                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Medium),
-                        color = uiColor
-                    )
-                }
+            TextButton(onClick = { /*TODO*/ }) {
+                Text(
+                    text = trailing,
+                    style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Medium),
+                    color = uiColor
+                )
             }
         }
+
     )
+
 }

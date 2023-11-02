@@ -25,27 +25,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.modernloginscreenjc.ui.theme.BlueGray
 import com.example.modernloginscreenjc.ui.theme.LightBlueWhite
+import com.example.modernloginscreenjc.ui.theme.dimens
 
 @Composable
 fun SocialMediaLogIn(
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int,
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
+
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(4.dp))
             .socialMedia()
             .clickable { onClick() }
-            .height(40.dp),
+            .height(MaterialTheme.dimens.buttonHeight),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
+
         Image(
-            modifier = Modifier.size(16.dp),
             painter = painterResource(id = icon),
             contentDescription = null,
+            modifier = Modifier.size(16.dp)
         )
 
         Spacer(modifier = Modifier.width(5.dp))
@@ -54,8 +57,11 @@ fun SocialMediaLogIn(
             text = text,
             style = MaterialTheme.typography.labelMedium.copy(color = Color(0xFF64748B))
         )
+
     }
+
 }
+
 
 fun Modifier.socialMedia(): Modifier = composed {
     if (isSystemInDarkTheme()) {
